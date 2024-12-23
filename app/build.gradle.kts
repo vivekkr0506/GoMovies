@@ -1,11 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
     namespace = "com.vivek.gomovies"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.vivek.gomovies"
@@ -45,4 +47,24 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+
+    // Retrofit
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation(libs.okhttp.logging.interceptor)
+
+    // Paging3
+    implementation (libs.androidx.paging.runtime)
+
+    // Hilt
+    implementation (libs.hilt.android)
+    kapt (libs.dagger.hilt.compiler)
+
+    // Coil
+    implementation (libs.coil)
+
+    // Lifecycle
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.lifecycle.livedata.ktx)
 }
