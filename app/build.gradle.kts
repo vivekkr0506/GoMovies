@@ -37,6 +37,19 @@ android {
     }
     buildFeatures{
         viewBinding = true
+        buildConfig = true
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+            buildConfigField("String", "API_KEY", "\"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZGI2NmU4YWEzZGVkZGQ4ZjVjY2E4YjlkOWRkYTYwMiIsIm5iZiI6MTcyNTA5MTEzMC44LCJzdWIiOiI2NmQyY2QzYWI2MzAyZDFmNTQ5NjViODkiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.YmH1v9Do0JOHJvt7lSZs7FI8-Srb8rPZKC8_RCVsYtI\"")
+        }
+        release {
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+            buildConfigField("String", "API_KEY", "\"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZGI2NmU4YWEzZGVkZGQ4ZjVjY2E4YjlkOWRkYTYwMiIsIm5iZiI6MTcyNTA5MTEzMC44LCJzdWIiOiI2NmQyY2QzYWI2MzAyZDFmNTQ5NjViODkiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.YmH1v9Do0JOHJvt7lSZs7FI8-Srb8rPZKC8_RCVsYtI\"")
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
     }
 }
 

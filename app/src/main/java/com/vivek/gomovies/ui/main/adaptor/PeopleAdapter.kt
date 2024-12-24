@@ -31,8 +31,9 @@ class PeopleAdapter(
 
         fun bind(person: Person) {
             binding.apply {
-                profileImage.load("https://image.tmdb.org/t/p/w500${person.profilePath}") {}
+                profileImage.load(person.real_path)
                 personName.text = person.name
+
                 root.setOnClickListener {
                     person.id?.let { it1 -> onPersonClicked(it1) }
                 }

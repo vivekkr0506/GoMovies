@@ -1,21 +1,48 @@
 package com.vivek.gomovies.model
 
-import com.google.gson.annotations.SerializedName
-
 data class PopularPeopleResponse(
-    @SerializedName("page") var page: Int? = null,
-    @SerializedName("results") var results: ArrayList<Person> = arrayListOf(),
-    @SerializedName("total_pages") var totalPages: Int? = null,
-    @SerializedName("total_results") var totalResults: Int? = null,
-
+    var page: Int? = null,
+    var results: ArrayList<Person> = arrayListOf(),
+    var totalPages: Int? = null,
+    var totalResults: Int? = null,
     )
 
 
 data class Person(
-    @SerializedName("id") var id: Int? = null,
-    @SerializedName("known_for_department") var knownForDepartment: String? = null,
-    @SerializedName("name") var name: String? = null,
-    @SerializedName("original_name") var originalName: String? = null,
-    @SerializedName("popularity") var popularity: Double? = null,
-    @SerializedName("profile_path") var profilePath: String? = null,
+    var id: Int? = null,
+    var knownForDepartment: String? = null,
+    var name: String? = null,
+    var originalName: String? = null,
+    var popularity: Double? = null,
+    var profile_path: String? = null,
+){
+    val real_path: String?
+        get() = "https://image.tmdb.org/t/p/w500$profile_path"
+}
+
+
+data class PersonDetails(
+    val name: String? = null,
+    val biography: String? = null,
+    val profile_path: String? = null,
+) {
+    val real_path: String?
+        get() = "https://image.tmdb.org/t/p/w500$profile_path"
+}
+
+
+data class PersonImageResponse(
+    val profiles: List<PersonImage>,
 )
+
+data class PersonImage(
+    val file_path: String,
+    val width: Int,
+    val height: Int,
+    val aspect_ratio: Double,
+    val vote_average: Double,
+    val vote_count: Int,
+) {
+    val fullImagePath: String
+        get() = "https://image.tmdb.org/t/p/w500$file_path"
+}
